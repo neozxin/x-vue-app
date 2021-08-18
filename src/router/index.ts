@@ -21,8 +21,9 @@ const routes: Array<RouteConfig> = [
 ];
 
 const router = new VueRouter({
-  mode: 'history',
-  base: process.env.BASE_URL,
+  /// uncomment below 2 lines to enable history mode
+  // mode: 'history',
+  // base: process.env.BASE_URL,
   routes,
 });
 

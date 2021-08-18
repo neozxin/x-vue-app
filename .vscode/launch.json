@@ -1,0 +1,52 @@
+{
+  "version": "0.2.0",
+  "inputs": [
+    {
+      "id": "pickPkgScriptKey",
+      "description": "Select client or server",
+      "type": "pickString",
+      "options": ["serve", "build", "test:unit", "test:e2e", "lint"],
+      "default": "test:e2e"
+    }
+  ],
+  "configurations": [
+    {
+      "type": "node",
+      "request": "attach",
+      "name": "Attach by Process ID",
+      "processId": "${command:PickProcess}"
+    },
+    { // Linux workaround: echo fs.inotify.max_user_watches=524288 | sudo tee -a /etc/sysctl.conf && sudo sysctl -p
+      "name": "Debug pkg npm script",
+      "type": "node",
+      "request": "launch",
+      "runtimeExecutable": "${workspaceRoot}/node_modules/.bin/npm-run-all",
+      "args": [
+        "${input:pickPkgScriptKey}"
+      ],
+      "cwd": "${workspaceRoot}",
+      "protocol": "inspector",
+      "console": "integratedTerminal",
+      "internalConsoleOptions": "neverOpen",
+      "env": {
+      },
+      "disableOptimisticBPs": true
+    },
+    {
+      "name": "Debug test script",
+      "type": "node",
+      "request": "launch",
+      "runtimeExecutable": "${workspaceRoot}/node_modules/.bin/jest",
+      "args": [
+      ],
+      "cwd": "${workspaceRoot}",
+      "protocol": "inspector",
+      "console": "integratedTerminal",
+      "internalConsoleOptions": "neverOpen",
+      "env": {
+        "FSOFE_TEST_STRATEGY": "all-tests"
+      },
+      "disableOptimisticBPs": true
+    }
+  ]
+}
