@@ -7,9 +7,9 @@
     "build": "vue-cli-service build",
     "test:unit": "cross-env FSOFE_TEST_STRATEGY='unit-test' jest --coverage",
     "test:e2e": "npm-run-all build test:e2e:local",
-    "test:e2e:local": "cross-env FSOFE_TEST_STRATEGY='e2e-test' node ./static-server.js jest -i",
-    "test:e2e:devmocha": "cross-env PORT=8081 vue-cli-service test:e2e 'tests/e2e/**/*.test.{j,t}s?(x)'",
-    "lint": "vue-cli-service lint"
+    "test:e2e:local": "cross-env FSOFE_TEST_STRATEGY='e2e-test' FSOFE_SERVER_SVCLIST='subproc,mock' node envrun.js local-server.js jest -i",
+    "test:e2e:devmocha": "cross-env PORT=8081 VUE_CLI_TEST=1 vue-cli-service test:e2e 'tests/e2e/**/*.test.{j,t}s?(x)'",
+    "lint": "node envrun.js local-lint.js"
   },
   "dependencies": {
     "core-js": "^3.6.5",
@@ -41,6 +41,7 @@
     "eslint-plugin-import": "^2.20.2",
     "eslint-plugin-vue": "^6.2.2",
     "lint-staged": "^9.5.0",
+    "mocker-api": "^2.9.0",
     "npm-run-all": "^4.1.5",
     "playwright": "^1.3.0",
     "sass": "^1.26.5",
