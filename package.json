@@ -10,7 +10,7 @@
     "test:e2e:local": "cross-env FSOFE_TEST_STRATEGY='e2e-test' FSOFE_SERVER_SVCLIST='subproc,mock' node envrun.js local-server.js jest -i",
     "test:e2e:devmocha": "cross-env PORT=8081 VUE_CLI_TEST=1 vue-cli-service test:e2e 'tests/e2e/**/*.test.{j,t}s?(x)'",
     "lint": "node envrun.js local-lint.js",
-    "storybook": "start-storybook -p 6006",
+    "storybook": "node envrun.js local-storybook.js",
     "build-storybook": "build-storybook"
   },
   "dependencies": {
