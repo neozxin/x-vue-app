@@ -24,6 +24,8 @@ module.exports = () => {
       'no-debugger': process.env.NODE_ENV === 'production' ? 'warn' : 'off',
       'arrow-body-style': 'off',
       '@typescript-eslint/no-empty-function': 'warn',
+      'eqeqeq': 'warn',
+      'quote-props': ['error', 'consistent-as-needed'],
       'linebreak-style': ['warn', process.platform === 'win32' ? 'windows' : 'unix'],
     },
     overrides: [
@@ -51,7 +53,7 @@ module.exports = () => {
       },
       {
         files: [
-          `./${FSOFE_CONFIG_DIR}/*.js`,
+          `./${FSOFE_CONFIG_DIR}/**/*.js`,
         ],
         rules: {
           '@typescript-eslint/no-var-requires': 'off',
