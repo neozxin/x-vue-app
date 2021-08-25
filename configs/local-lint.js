@@ -13,12 +13,20 @@ const execLint = (options = {}) => {
   const {
     argv,
   } = options;
-  const defaultArgv = [FSOFE_CONFIG_DIR, FSOFE_BUILD_SRCDIR, FSOFE_TEST_E2E_DIR, '*.js'];
+  const defaultSrcDirs = [FSOFE_CONFIG_DIR, FSOFE_BUILD_SRCDIR, FSOFE_TEST_E2E_DIR, '*.js'];
   execSubprocess({
     argv: [
-      'vue-cli-service',
-      'lint',
-      ...(argv?.length) ? argv : defaultArgv,
+      // 'vue-cli-service',
+      // 'lint',
+      'eslint',
+      ...(argv?.length) ? argv : [
+        '--fix',
+        '--ext',
+        '.js,.jsx,.vue,.ts,.tsx',
+        '-f',
+        'codeframe',
+        ...defaultSrcDirs,
+      ],
     ],
   });
 };

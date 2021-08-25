@@ -12,9 +12,9 @@ module.exports = () => {
       node: true,
     },
     extends: [
-      'plugin:vue/essential',
-      '@vue/airbnb',
-      '@vue/typescript/recommended',
+      'plugin:vue/essential', // eslint-plugin-vue/lib/index
+      '@vue/airbnb', // @vue/eslint-config-airbnb/index
+      '@vue/typescript/recommended', // @vue/eslint-config-typescript/recommended
     ],
     parserOptions: {
       ecmaVersion: 2020,

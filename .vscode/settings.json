@@ -1,5 +1,8 @@
 {
   "editor.codeActionsOnSave": {
     "source.fixAll.eslint": true
-  }
+  },
+  "eslint.validate": [ // workaround for windows ts issue: https://github.com/microsoft/vscode-eslint/issues/1299
+    "typescript"
+  ]
 }
