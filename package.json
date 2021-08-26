@@ -9,7 +9,9 @@
     "test:e2e": "npm-run-all build test:e2e:local",
     "test:e2e:local": "cross-env FSOFE_TEST_STRATEGY='e2e-test' FSOFE_SERVER_SVCLIST='subproc,mock' node envrun.js local-server.js jest -i",
     "test:e2e:devmocha": "cross-env PORT=8081 VUE_CLI_TEST=1 vue-cli-service test:e2e 'tests/e2e/**/*.test.{j,t}s?(x)'",
-    "lint": "node envrun.js local-lint.js"
+    "lint": "node envrun.js local-lint.js",
+    "storybook": "start-storybook -p 6006",
+    "build-storybook": "build-storybook"
   },
   "dependencies": {
     "core-js": "^3.6.5",
@@ -21,6 +23,11 @@
     "vuex": "^3.4.0"
   },
   "devDependencies": {
+    "@babel/core": "^7.15.0",
+    "@storybook/addon-actions": "^6.3.7",
+    "@storybook/addon-essentials": "^6.3.7",
+    "@storybook/addon-links": "^6.3.7",
+    "@storybook/vue": "^6.3.7",
     "@types/jest": "^24.0.19",
     "@typescript-eslint/eslint-plugin": "^4.18.0",
     "@typescript-eslint/parser": "^4.18.0",
@@ -35,6 +42,7 @@
     "@vue/eslint-config-airbnb": "^5.0.2",
     "@vue/eslint-config-typescript": "^7.0.0",
     "@vue/test-utils": "^1.0.4",
+    "babel-loader": "^8.2.2",
     "chai": "^4.1.2",
     "cross-env": "^7.0.3",
     "eslint": "^6.7.2",
@@ -48,6 +56,7 @@
     "sass-loader": "^8.0.2",
     "typescript": "~4.1.5",
     "vue-cli-plugin-e2e-playwright": "~1.0.2",
+    "vue-loader": "^15.9.8",
     "vue-template-compiler": "^2.6.11"
   },
   "peerDependencies": {
